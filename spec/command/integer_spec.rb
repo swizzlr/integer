@@ -18,7 +18,6 @@ module Pod
       end
 
       it "runs if passed in an Pod name" do
-        Config.instance.skip_repo_update = false
         command = Pod::Command.parse(['try', 'ARAnalytics'])
         Installer::PodSourceInstaller.any_instance.expects(:install!)
         command.expects(:update_specs_repos)
@@ -28,7 +27,6 @@ module Pod
       end
 
       it "runs if passed in a git repository URL" do
-        Config.instance.skip_repo_update = false
         command = Pod::Command.parse(['try', 'https://github.com/orta/ARAnalytics.git'])
         Installer::PodSourceInstaller.any_instance.expects(:install!)
         command.expects(:update_specs_repos)
